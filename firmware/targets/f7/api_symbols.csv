@@ -155,17 +155,12 @@ Header,+,lib/mlib/m-rbtree.h,,
 Header,+,lib/mlib/m-tuple.h,,
 Header,+,lib/mlib/m-variant.h,,
 Header,+,lib/music_worker/music_worker.h,,
-Header,+,lib/nfc/helpers/iso7816.h,,
 Header,+,lib/nfc/helpers/mfkey32.h,,
-Header,+,lib/nfc/helpers/mrtd_helpers.h,,
 Header,+,lib/nfc/helpers/nfc_generators.h,,
 Header,+,lib/nfc/nfc_device.h,,
 Header,+,lib/nfc/nfc_types.h,,
 Header,+,lib/nfc/nfc_worker.h,,
 Header,+,lib/nfc/parsers/nfc_supported_card.h,,
-Header,+,lib/nfc/protocols/felica.h,,
-Header,+,lib/nfc/protocols/felica_util.h,,
-Header,+,lib/nfc/protocols/mrtd.h,,
 Header,+,lib/nfc/protocols/nfc_util.h,,
 Header,+,lib/one_wire/maxim_crc.h,,
 Header,+,lib/one_wire/one_wire_host.h,,
@@ -906,23 +901,6 @@ Function,-,fdim,double,"double, double"
 Function,-,fdimf,float,"float, float"
 Function,-,fdiml,long double,"long double, long double"
 Function,-,fdopen,FILE*,"int, const char*"
-Function,-,felica_check_ic_type,_Bool,uint8_t*
-Function,-,felica_clear,void,FelicaData*
-Function,-,felica_define_normal_block,void,"FelicaService*, uint16_t, uint8_t*"
-Function,+,felica_estimate_timing_us,uint_least32_t,"uint_least8_t, uint_least8_t"
-Function,-,felica_get_ic_type,FelicaICType,uint8_t*
-Function,-,felica_get_service_name,FuriString*,FelicaService*
-Function,+,felica_get_system_name,FuriString*,FelicaSystem*
-Function,-,felica_lite_dump_data,_Bool,"FuriHalNfcTxRxContext*, FelicaReader*, FelicaData*, FelicaSystem*"
-Function,-,felica_lite_is_issued,_Bool,FelicaLiteInfo*
-Function,-,felica_lite_prepare_unencrypted_read,uint8_t,"uint8_t*, const FelicaReader*, _Bool, const uint8_t*, uint8_t"
-Function,-,felica_lite_prepare_unencrypted_write,uint8_t,"uint8_t*, const FelicaReader*, const uint8_t*, uint8_t, const uint8_t*"
-Function,-,felica_parse_unencrypted_read,uint16_t,"uint8_t*, uint8_t, FelicaReader*, uint8_t*, uint16_t"
-Function,-,felica_parse_unencrypted_write,_Bool,"uint8_t*, uint8_t, FelicaReader*"
-Function,-,felica_prepare_unencrypted_read,uint8_t,"uint8_t*, const FelicaReader*, const uint16_t*, uint8_t, const uint32_t*, uint8_t"
-Function,-,felica_prepare_unencrypted_write,uint8_t,"uint8_t*, FelicaReader*, const uint16_t*, uint8_t, const uint32_t*, uint8_t, const uint8_t*"
-Function,-,felica_push_normal_block,void,"FelicaService*, uint8_t*"
-Function,-,felica_read_card,_Bool,"FuriHalNfcTxRxContext*, FelicaData*, uint8_t*, uint8_t*"
 Function,-,feof,int,FILE*
 Function,-,feof_unlocked,int,FILE*
 Function,-,ferror,int,FILE*
@@ -1478,8 +1456,8 @@ Function,-,furi_hal_subghz_dump_state,void,
 Function,+,furi_hal_subghz_flush_rx,void,
 Function,+,furi_hal_subghz_flush_tx,void,
 Function,+,furi_hal_subghz_get_data_gpio,const GpioPin*,
-Function,+,furi_hal_subghz_get_extend_settings,void,"_Bool*, _Bool*"
 Function,+,furi_hal_subghz_get_ext_power_amp,_Bool,
+Function,+,furi_hal_subghz_get_extend_settings,void,"_Bool*, _Bool*"
 Function,+,furi_hal_subghz_get_lqi,uint8_t,
 Function,+,furi_hal_subghz_get_rolling_counter_mult,uint8_t,
 Function,+,furi_hal_subghz_get_rssi,float,
@@ -1497,8 +1475,8 @@ Function,+,furi_hal_subghz_reset,void,
 Function,+,furi_hal_subghz_rx,void,
 Function,+,furi_hal_subghz_rx_pipe_not_empty,_Bool,
 Function,+,furi_hal_subghz_set_async_mirror_pin,void,const GpioPin*
-Function,+,furi_hal_subghz_set_extend_settings,void,"_Bool, _Bool"
 Function,+,furi_hal_subghz_set_ext_power_amp,void,_Bool
+Function,+,furi_hal_subghz_set_extend_settings,void,"_Bool, _Bool"
 Function,+,furi_hal_subghz_set_frequency,uint32_t,uint32_t
 Function,+,furi_hal_subghz_set_frequency_and_path,uint32_t,uint32_t
 Function,+,furi_hal_subghz_set_path,void,FuriHalSubGhzPath
@@ -1879,8 +1857,6 @@ Function,-,islower,int,int
 Function,-,islower_l,int,"int, locale_t"
 Function,-,isnan,int,double
 Function,-,isnanf,int,float
-Function,-,iso7816_tlv_parse,TlvInfo,const uint8_t*
-Function,-,iso7816_tlv_select,TlvInfo,"const uint8_t*, size_t, const uint16_t[], size_t"
 Function,-,isprint,int,int
 Function,-,isprint_l,int,"int, locale_t"
 Function,-,ispunct,int,int
@@ -2067,7 +2043,7 @@ Function,-,mf_classic_auth_write_block,_Bool,"FuriHalNfcTxRxContext*, MfClassicB
 Function,-,mf_classic_authenticate,_Bool,"FuriHalNfcTxRxContext*, uint8_t, uint64_t, MfClassicKey"
 Function,-,mf_classic_authenticate_skip_activate,_Bool,"FuriHalNfcTxRxContext*, uint8_t, uint64_t, MfClassicKey, _Bool, uint32_t"
 Function,-,mf_classic_block_to_value,_Bool,"const uint8_t*, int32_t*, uint8_t*"
-Function,-,mf_classic_check_card_type,_Bool,FuriHalNfcADevData*
+Function,-,mf_classic_check_card_type,_Bool,"uint8_t, uint8_t, uint8_t"
 Function,+,mf_classic_dict_add_key,_Bool,"MfClassicDict*, uint8_t*"
 Function,-,mf_classic_dict_add_key_str,_Bool,"MfClassicDict*, FuriString*"
 Function,+,mf_classic_dict_alloc,MfClassicDict*,MfClassicDictType
@@ -2085,7 +2061,7 @@ Function,+,mf_classic_dict_is_key_present,_Bool,"MfClassicDict*, uint8_t*"
 Function,-,mf_classic_dict_is_key_present_str,_Bool,"MfClassicDict*, FuriString*"
 Function,-,mf_classic_dict_rewind,_Bool,MfClassicDict*
 Function,-,mf_classic_emulator,_Bool,"MfClassicEmulator*, FuriHalNfcTxRxContext*, _Bool"
-Function,-,mf_classic_get_classic_type,MfClassicType,FuriHalNfcADevData*
+Function,-,mf_classic_get_classic_type,MfClassicType,"uint8_t, uint8_t, uint8_t"
 Function,+,mf_classic_get_read_sectors_and_keys,void,"MfClassicData*, uint8_t*, uint8_t*"
 Function,+,mf_classic_get_sector_by_block,uint8_t,uint8_t
 Function,-,mf_classic_get_sector_trailer_block_num_by_sector,uint8_t,uint8_t
@@ -2126,7 +2102,7 @@ Function,+,mf_df_cat_file,void,"MifareDesfireFile*, FuriString*"
 Function,-,mf_df_cat_free_mem,void,"MifareDesfireFreeMemory*, FuriString*"
 Function,-,mf_df_cat_key_settings,void,"MifareDesfireKeySettings*, FuriString*"
 Function,-,mf_df_cat_version,void,"MifareDesfireVersion*, FuriString*"
-Function,-,mf_df_check_card_type,_Bool,FuriHalNfcADevData*
+Function,-,mf_df_check_card_type,_Bool,"uint8_t, uint8_t, uint8_t"
 Function,-,mf_df_clear,void,MifareDesfireData*
 Function,-,mf_df_get_application,MifareDesfireApplication*,"MifareDesfireData*, const uint8_t[3]*"
 Function,-,mf_df_get_file,MifareDesfireFile*,"MifareDesfireApplication*, uint8_t"
@@ -2151,7 +2127,7 @@ Function,-,mf_df_prepare_read_data,uint16_t,"uint8_t*, uint8_t, uint32_t, uint32
 Function,-,mf_df_prepare_read_records,uint16_t,"uint8_t*, uint8_t, uint32_t, uint32_t"
 Function,-,mf_df_prepare_select_application,uint16_t,"uint8_t*, uint8_t[3]"
 Function,-,mf_df_read_card,_Bool,"FuriHalNfcTxRxContext*, MifareDesfireData*"
-Function,-,mf_ul_check_card_type,_Bool,FuriHalNfcADevData*
+Function,-,mf_ul_check_card_type,_Bool,"uint8_t, uint8_t, uint8_t"
 Function,+,mf_ul_emulation_supported,_Bool,MfUltralightData*
 Function,+,mf_ul_is_full_capture,_Bool,MfUltralightData*
 Function,-,mf_ul_prepare_emulation,void,"MfUltralightEmulator*, MfUltralightData*"
@@ -2186,33 +2162,6 @@ Function,-,modf,double,"double, double*"
 Function,-,modff,float,"float, float*"
 Function,-,modfl,long double,"long double, long double*"
 Function,-,mrand48,long,
-Function,-,mrtd_alloc_init,MrtdApplication*,"FuriHalNfcTxRxContext*, MrtdData*"
-Function,-,mrtd_auth_method_parse_string,_Bool,"MrtdAuthMethod*, const char*"
-Function,+,mrtd_auth_method_string,const char*,MrtdAuthMethod
-Function,+,mrtd_auth_params_load,_Bool,"Storage*, DialogsApp*, MrtdAuthData*, const char*, _Bool"
-Function,+,mrtd_auth_params_save,_Bool,"Storage*, DialogsApp*, MrtdAuthData*, const char*"
-Function,-,mrtd_auth_params_save_file,_Bool,"Storage*, DialogsApp*, MrtdAuthData*, const char*, const char*, const char*"
-Function,-,mrtd_authenticate,_Bool,MrtdApplication*
-Function,-,mrtd_bac_check_digit,uint8_t,"const char*, const uint8_t"
-Function,-,mrtd_bac_decrypt,_Bool,"const uint8_t*, size_t, uint8_t*, uint8_t*"
-Function,-,mrtd_bac_decrypt_verify,_Bool,"const uint8_t*, size_t, uint8_t*, uint8_t*, uint8_t*"
-Function,-,mrtd_bac_decrypt_verify_sm,uint16_t,"const uint8_t*, size_t, uint8_t*, uint8_t*, uint64_t, uint8_t*, size_t*"
-Function,-,mrtd_bac_encrypt,_Bool,"const uint8_t*, size_t, const uint8_t*, uint8_t*"
-Function,-,mrtd_bac_get_kmrz,_Bool,"MrtdAuthData*, char*, uint8_t"
-Function,-,mrtd_bac_keys,_Bool,"MrtdAuthData*, uint8_t[16], uint8_t[16]"
-Function,-,mrtd_bac_keys_from_seed,_Bool,"const uint8_t*, uint8_t*, uint8_t*"
-Function,-,mrtd_bac_mac,_Bool,"const uint8_t*, size_t, const uint8_t*, uint8_t*"
-Function,-,mrtd_bac_mac_finalize,_Bool,"mrtd_bac_mac_ctx*, uint8_t[8]"
-Function,-,mrtd_bac_mac_init,_Bool,"mrtd_bac_mac_ctx*, const uint8_t[16]"
-Function,-,mrtd_bac_mac_pad,_Bool,mrtd_bac_mac_ctx*
-Function,-,mrtd_bac_mac_update,_Bool,"mrtd_bac_mac_ctx*, const uint8_t*, size_t"
-Function,-,mrtd_bac_padded_mac,_Bool,"const uint8_t*, size_t, uint8_t*, uint8_t*"
-Function,-,mrtd_parse_date,void,"MrtdDate*, const unsigned char*"
-Function,-,mrtd_print_date,void,"char*, MrtdDate*"
-Function,-,mrtd_protect_apdu,size_t,"uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, const void*, int16_t, const uint8_t*, const uint8_t*, uint64_t, uint8_t*"
-Function,-,mrtd_read_parse_file,_Bool,"MrtdApplication*, EFFile"
-Function,-,mrtd_select_app,_Bool,"MrtdApplication*, AIDValue"
-Function,+,mrtd_tag_to_file,const EFFile*,uint8_t
 Function,-,music_worker_alloc,MusicWorker*,
 Function,-,music_worker_clear,void,MusicWorker*
 Function,-,music_worker_free,void,MusicWorker*
@@ -2249,7 +2198,6 @@ Function,+,nfc_device_save,_Bool,"NfcDevice*, const char*"
 Function,+,nfc_device_save_shadow,_Bool,"NfcDevice*, const char*"
 Function,+,nfc_device_set_loading_callback,void,"NfcDevice*, NfcLoadingCallback, void*"
 Function,+,nfc_device_set_name,void,"NfcDevice*, const char*"
-Function,+,nfc_felica_type,const char*,FelicaICType
 Function,+,nfc_file_select,_Bool,NfcDevice*
 Function,-,nfc_generate_mf_classic,void,"NfcDeviceData*, uint8_t, MfClassicType"
 Function,+,nfc_get_dev_type,const char*,FuriHalNfcType
@@ -2264,7 +2212,6 @@ Function,+,nfc_util_odd_parity,void,"const uint8_t*, uint8_t*, uint8_t"
 Function,+,nfc_util_odd_parity8,uint8_t,uint8_t
 Function,+,nfc_worker_alloc,NfcWorker*,
 Function,+,nfc_worker_free,void,NfcWorker*
-Function,+,nfc_worker_get_event_data,void*,NfcWorker*
 Function,+,nfc_worker_get_state,NfcWorkerState,NfcWorker*
 Function,-,nfc_worker_nfcv_emulate,void,NfcWorker*
 Function,-,nfc_worker_nfcv_sniff,void,NfcWorker*
@@ -3099,7 +3046,6 @@ Function,-,timerStopwatchMeasure,uint32_t,
 Function,-,timerStopwatchStart,void,
 Function,-,timingsafe_bcmp,int,"const void*, const void*, size_t"
 Function,-,timingsafe_memcmp,int,"const void*, const void*, size_t"
-Function,-,tlv_number,int,TlvInfo
 Function,-,tmpfile,FILE*,
 Function,-,tmpnam,char*,char*
 Function,-,toascii,int,int
@@ -3354,9 +3300,7 @@ Function,-,y1f,float,float
 Function,-,yn,double,"int, double"
 Function,-,ynf,float,"int, float"
 Variable,-,AHBPrescTable,const uint32_t[16],
-Variable,-,AID,AIDSet,
 Variable,-,APBPrescTable,const uint32_t[8],
-Variable,-,EF,const EFFormat,
 Variable,+,FLIPPER_APPS,const FlipperInternalApplication[],
 Variable,+,FLIPPER_APPS_COUNT,const size_t,
 Variable,+,FLIPPER_ARCHIVE,const FlipperInternalApplication,

@@ -8,13 +8,10 @@
 #include <furi_hal_nfc.h>
 #include <lib/nfc/helpers/mf_classic_dict.h>
 #include <lib/nfc/protocols/emv.h>
-#include <lib/nfc/protocols/mrtd.h>
 #include <lib/nfc/protocols/mifare_ultralight.h>
 #include <lib/nfc/protocols/mifare_classic.h>
 #include <lib/nfc/protocols/mifare_desfire.h>
 #include <lib/nfc/protocols/nfcv.h>
-#include <lib/nfc/protocols/felica.h>
-#include <lib/nfc/protocols/felica_util.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,12 +29,10 @@ typedef void (*NfcLoadingCallback)(void* context, bool state);
 typedef enum {
     NfcDeviceProtocolUnknown,
     NfcDeviceProtocolEMV,
-    NfcDeviceProtocolMRTD,
     NfcDeviceProtocolMifareUl,
     NfcDeviceProtocolMifareClassic,
     NfcDeviceProtocolMifareDesfire,
-    NfcDeviceProtocolNfcV,
-    NfcDeviceProtocolFelica,
+    NfcDeviceProtocolNfcV
 } NfcProtocol;
 
 typedef enum {
@@ -47,7 +42,6 @@ typedef enum {
     NfcDeviceSaveFormatMifareClassic,
     NfcDeviceSaveFormatMifareDesfire,
     NfcDeviceSaveFormatNfcV,
-    NfcDeviceSaveFormatFelica,
 } NfcDeviceSaveFormat;
 
 typedef struct {
@@ -67,8 +61,6 @@ typedef enum {
     NfcReadModeMfDesfire,
     NfcReadModeEMV,
     NfcReadModeNFCA,
-    NfcReadModeFelica,
-    NfcReadModeNFCF,
 } NfcReadMode;
 
 typedef struct {
@@ -82,12 +74,10 @@ typedef struct {
     };
     union {
         EmvData emv_data;
-        MrtdData mrtd_data;
         MfUltralightData mf_ul_data;
         MfClassicData mf_classic_data;
         MifareDesfireData mf_df_data;
         NfcVData nfcv_data;
-        FelicaData felica_data;
     };
     FuriString* parsed_data;
 } NfcDeviceData;

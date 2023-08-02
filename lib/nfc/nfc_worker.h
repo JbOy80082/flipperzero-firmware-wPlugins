@@ -42,15 +42,13 @@ typedef enum {
     NfcWorkerEventReadUidNfcV,
     NfcWorkerEventReadUidNfcF,
     NfcWorkerEventReadUidNfcA,
-    NfcWorkerEventReadFelica,
     NfcWorkerEventReadMfUltralight,
     NfcWorkerEventReadMfDesfire,
     NfcWorkerEventReadMfClassicDone,
     NfcWorkerEventReadMfClassicLoadKeyCache,
     NfcWorkerEventReadMfClassicDictAttackRequired,
-    NfcWorkerEventReadNfcV,
     NfcWorkerEventReadBankCard,
-    NfcWorkerEventReadPassport,
+    NfcWorkerEventReadNfcV,
 
     // Nfc worker common events
     NfcWorkerEventSuccess,
@@ -91,8 +89,6 @@ typedef bool (*NfcWorkerCallback)(NfcWorkerEvent event, void* context);
 NfcWorker* nfc_worker_alloc();
 
 NfcWorkerState nfc_worker_get_state(NfcWorker* nfc_worker);
-
-void* nfc_worker_get_event_data(NfcWorker* nfc_worker);
 
 void nfc_worker_free(NfcWorker* nfc_worker);
 
